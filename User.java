@@ -58,7 +58,7 @@
         //////////what are the required feedback outputs//////////
         if (this.fCount == maxfCount || this.follows(name)) 
             return false; 
-        System.out.println("\n...Adding " + name + " to the follows list of " + this.name + "...");
+        //System.out.println("\n...Adding " + name + " to the follows list of " + this.name + "...");
         this.follows[fCount] = name;
         fCount ++;
         return true;
