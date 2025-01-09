@@ -55,13 +55,17 @@
     /** Makes this user follow the given name. If successful, returns true. 
      *  If this user already follows the given name, or if the follows list is full, does nothing and returns false; */
     public boolean addFollowee(String name) {
-        //////////what are the required feedback outputs//////////
-        if (this.fCount == maxfCount || this.follows(name)) 
+        try {
+           if (this.fCount == maxfCount || this.follows(name)) 
             return false; 
-        //System.out.println("\n...Adding " + name + " to the follows list of " + this.name + "...");
         this.follows[fCount] = name;
         fCount ++;
-        return true;
+        return true;      
+        } 
+        catch (Exception e) {
+            return false;
+        }
+   
     }
 
   /** Removes the given name from the follows list of this user. If successful, returns true.
