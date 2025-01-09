@@ -30,7 +30,7 @@
 
     /** Returns the name of this user. */
     public String getName() {
-        return name;
+        return this.name;
     }
 
     /** Returns the follows array. */
