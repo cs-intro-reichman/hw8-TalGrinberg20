@@ -54,19 +54,20 @@ public class Network {
      *  If any of the two names is not a user in this network,
      *  or if the "follows" addition failed for some reason, returns false. */
     public boolean addFollowee(String name1, String name2) {
-        try {
-                  if (!(getUser(name1).addFollowee(name2)) || getUser(name2) == null || getUser(name1) == null ) {
-            return false;
-        }
-        } catch (Exception e) {
-                   return false;
- 
-        }
-  
-        return false;
+    try {
+        User user1 = getUser(name1);
+        User user2 = getUser(name2);
 
-        //////dont need to add the folowee again beacuse already done so in the condition?////
+        if (user1 == null || user2 == null) {
+            return false; 
+        }
+
+        return user1.addFollowee(name2);
+    } catch (Exception e) {
+        return false;
     }
+}
+
     
     /** For the user with the given name, recommends another user to follow. The recommended user is
      *  the user that has the maximal mutual number of followees as the user with the given name. */
