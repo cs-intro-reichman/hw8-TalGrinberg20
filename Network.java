@@ -92,7 +92,8 @@ public class Network {
     /** Computes and returns the name of the most popular user in this network: 
      *  The user who appears the most in the follow lists of all the users. */
     public String mostPopularUser() {
-        int maxFollowers = 0;
+       try {
+               int maxFollowers = 0;
         User mostPopularUser = null;
         for (int i = 0; i < userCount; i++) {
             if (followeeCount(users[i].getName()) > maxFollowers) {
@@ -101,6 +102,11 @@ public class Network {
             }
         }
         return mostPopularUser.getName();
+       } catch (Exception e) {
+        return null;
+       }
+       
+    
     }
 
     /** Returns the number of times that the given name appears in the follows lists of all
@@ -116,11 +122,11 @@ public class Network {
     }
 
     // Returns a textual description of all the users in this network, and who they follow.
-    public String toString() {
-        StringBuilder ans = new StringBuilder("Network:\n");
-        for (int i = 0; i < this.userCount; i++) {
-            ans.append(" ").append(this.users[i].toString()).append("\n");
-        }
-        return ans.toString();
+   public String toString() {
+    StringBuilder ans = new StringBuilder("Network:\n");
+    for (int i = 0; i < this.userCount; i++) {
+        ans.append(this.users[i].toString()).append("\n");
     }
+    return ans.toString();
+}
 }
